@@ -36,7 +36,7 @@ public class EnigmaGUI {
 
         // This will set up the Initial Positions
         JLabel initialPos = new JLabel("Initial Positions");
-        JTextField inVal = new JTextField("1.0", 10);;
+        JTextField inVal = new JTextField("", 10);;
 
         JPanel panelThree = new JPanel();
         panelThree.setLayout(new BorderLayout());
@@ -50,21 +50,24 @@ public class EnigmaGUI {
         
         JPanel panelFour = new JPanel();
         panelFour.setLayout(new BorderLayout());
-        panelFour.add(encrypt, BorderLayout.EAST);
-        panelFour.add(decrypt, BorderLayout.WEST);
+        panelFour.add(encrypt, BorderLayout.WEST);
+        panelFour.add(decrypt, BorderLayout.EAST);
 
         JPanel rightNorth = new JPanel();
         rightNorth.add(panelFour, BorderLayout.CENTER);
-
+        
+        //Setting it all to the north
         JPanel fullNorth = new JPanel();
         fullNorth.setLayout(new BorderLayout());
         fullNorth.add(leftNorth, BorderLayout.WEST);
         fullNorth.add(rightNorth, BorderLayout.EAST);
 
+
+        //the JFrame to work on
         JFrame j = new JFrame();
         j.add(fullNorth, BorderLayout.NORTH);
         
-
+        
         j.pack(); // do alignment within the layout
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         j.setVisible(true);
