@@ -71,6 +71,31 @@ public class EnigmaFrame {
         fullNorth.add(rightNorth, BorderLayout.EAST);
 
         j.add(fullNorth, BorderLayout.NORTH);
+
+        //setting up the input box
+        JLabel inputTxt = new JLabel("Input ");
+        JTextArea inputArea = new JTextArea(); //wanna setText()
+
+        JPanel centerInput = new JPanel();
+        centerInput.setLayout(new BorderLayout());
+
+        centerInput.add(inputTxt, BorderLayout.WEST);
+        centerInput.add(inputArea, BorderLayout.EAST);
+
+        j.add(centerInput, BorderLayout.CENTER);
+
+        //setting up the output box
+        JLabel outputTxt = new JLabel("Output ");
+        JTextArea outputArea = new JTextArea(); //wanna setText()
+
+        JPanel southPanel = new JPanel();
+        southPanel.setLayout(new BorderLayout());
+
+        southPanel.add(outputTxt, BorderLayout.WEST);
+        southPanel.add(outputArea, BorderLayout.EAST);
+
+        j.add(southPanel, BorderLayout.SOUTH);
+
     }
     
     public JFrame getJFrame() {

@@ -7,5 +7,7 @@ public class EnigmaGUI {
         j.pack(); // do alignment within the layout
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         j.setVisible(true);
+
+        
     }
 }
