@@ -1,20 +1,14 @@
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.*;
 
 public class EnigmaFrame {
     //the JFrame to work on
     JFrame j = new JFrame();
 
     public EnigmaFrame(){
-        Integer[] units = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
-                    26, 27 };
+        Integer[] units = { 1, 2, 3, 4, 5};
         JLabel inner = new JLabel("Inner");
         JComboBox<Integer> innerUnit = new JComboBox<Integer>(units);
         JLabel middle = new JLabel("Middle");
@@ -95,6 +89,19 @@ public class EnigmaFrame {
         southPanel.add(outputArea, BorderLayout.EAST);
 
         j.add(southPanel, BorderLayout.SOUTH);
+
+        //now adding actionlisteners
+        encrypt.addActionListener(new ActionListener() {
+                //if encrypt, make enigma and encrypt
+                public void actionPerformed(ActionEvent e) {
+                    //get selected index is returning -1 
+                    System.out.println(innerUnit.getSelectedIndex());
+                    System.out.println(middleUnit.getSelectedIndex());
+                    System.out.println(outerUnit.getSelectedIndex());
+                    Enigma one = new Enigma(units[innerUnit.getSelectedIndex()], units[middleUnit.getSelectedIndex()], units[outerUnit.getSelectedIndex()], inVal.getText());
+                    outputArea.setText(one.encrypt(inputArea.getText()));
+                }
+            });
 
     }
     
