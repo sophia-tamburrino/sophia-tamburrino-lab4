@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -8,6 +7,7 @@ public class EnigmaFrame {
     JFrame j = new JFrame();
 
     public EnigmaFrame(){
+        //creating the 
         Integer[] units = { 1, 2, 3, 4, 5};
         JLabel inner = new JLabel("Inner");
         JComboBox<Integer> innerUnit = new JComboBox<Integer>(units);
@@ -69,6 +69,7 @@ public class EnigmaFrame {
         //setting up the input box
         JLabel inputTxt = new JLabel("Input ");
         JTextArea inputArea = new JTextArea(); //wanna setText()
+        inputArea.setPreferredSize(new Dimension(400, 50));
 
         JPanel centerInput = new JPanel();
         centerInput.setLayout(new BorderLayout());
@@ -81,6 +82,7 @@ public class EnigmaFrame {
         //setting up the output box
         JLabel outputTxt = new JLabel("Output ");
         JTextArea outputArea = new JTextArea(); //wanna setText()
+        outputArea.setPreferredSize(new Dimension(400, 50));
 
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new BorderLayout());
@@ -90,19 +92,27 @@ public class EnigmaFrame {
 
         j.add(southPanel, BorderLayout.SOUTH);
 
+        j.setPreferredSize(new Dimension(600, 215));
         //now adding actionlisteners
         encrypt.addActionListener(new ActionListener() {
                 //if encrypt, make enigma and encrypt
                 public void actionPerformed(ActionEvent e) {
-                    //get selected index is returning -1 
-                    System.out.println(innerUnit.getSelectedIndex());
-                    System.out.println(middleUnit.getSelectedIndex());
-                    System.out.println(outerUnit.getSelectedIndex());
+                    // System.out.println(innerUnit.getSelectedIndex());
+                    // System.out.println(middleUnit.getSelectedIndex());
+                    // System.out.println(outerUnit.getSelectedIndex());
                     Enigma one = new Enigma(units[innerUnit.getSelectedIndex()], units[middleUnit.getSelectedIndex()], units[outerUnit.getSelectedIndex()], inVal.getText());
                     outputArea.setText(one.encrypt(inputArea.getText()));
+                    //System.out.println(outputArea.getText());
                 }
             });
 
+        decrypt.addActionListener(new ActionListener() {
+            //if decrypt, make enigma and decrypt
+            public void actionPerformed(ActionEvent e) {
+                Enigma two = new Enigma(units[innerUnit.getSelectedIndex()], units[middleUnit.getSelectedIndex()], units[outerUnit.getSelectedIndex()], inVal.getText());
+                outputArea.setText(two.decrypt(inputArea.getText()));
+            }
+        });
     }
     
     public JFrame getJFrame() {
