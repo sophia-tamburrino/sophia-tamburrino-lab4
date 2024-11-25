@@ -7,7 +7,7 @@ public class EnigmaFrame {
     JFrame j = new JFrame();
 
     public EnigmaFrame(){
-        //creating the 
+        //creating the rotor numbers
         Integer[] units = { 1, 2, 3, 4, 5};
         JLabel inner = new JLabel("Inner");
         JComboBox<Integer> innerUnit = new JComboBox<Integer>(units);
